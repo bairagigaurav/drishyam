@@ -64,18 +64,18 @@ export default function CategoryGrid() {
             >
               <Link
                 href={`/shop?category=${encodeURIComponent(cat.name)}`}
-                className="block relative overflow-hidden rounded-[26px] border border-[#f1e7d8] bg-white shadow-[0_16px_35px_rgba(15,23,42,0.04)]"
+                className="block relative h-full overflow-hidden rounded-[26px] border border-[#f1e7d8] bg-white shadow-[0_16px_35px_rgba(15,23,42,0.04)]"
               >
                 <div className="relative aspect-[4/5] w-full overflow-hidden bg-[#f1e7d8]/40">
                   {cat.image ? (
-                    <Image
-                      src={cat.image}
-                      alt={cat.name}
-                      fill
-                      unoptimized={typeof cat.image === "string" && cat.image.startsWith("data:")}
-                      className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                    />
+         <Image
+  src={cat.image}
+  alt={cat.name}
+  fill
+  unoptimized
+  className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.02]"
+  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+/>
                   ) : (
                     <div className="flex h-full w-full items-center justify-center text-xs text-charcoal/40">
                       No Image
