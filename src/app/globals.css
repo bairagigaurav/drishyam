@@ -1,0 +1,88 @@
+@import "tailwindcss";
+
+:root {
+  --background: #fffaf3;
+  --foreground: #111111;
+  --page-glow: rgba(255, 153, 51, 0.12);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans), sans-serif;
+  --font-serif: var(--font-playfair), serif;
+  --color-beige-50: #fffaf5;
+  --color-beige-100: #f8efe4;
+  --color-beige-200: #eedfc8;
+  --color-charcoal: #111111;
+  --color-whatsapp: #25D366;
+  --color-gold-50: #fff7eb;
+  --color-gold-100: #fef0d7;
+  --color-gold-200: #f5d9aa;
+  --color-gold-500: #c98b1f;
+  --color-saffron: #ff9933;
+  --color-emerald-600: #1f5f4a;
+  --color-indigo-900: #1f2a44;
+}
+
+body {
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), sans-serif;
+  overflow-x: hidden;
+}
+
+button,
+[type="button"],
+[type="submit"],
+[type="reset"],
+select,
+input,
+a[href],
+[role="button"] {
+  cursor: pointer;
+}
+
+.btn-primary,
+.btn-secondary,
+.cta-primary,
+.cta-secondary {
+  border-radius: 0.875rem !important;
+}
+
+button:disabled,
+input:disabled,
+select:disabled {
+  cursor: not-allowed;
+}
+
+main,
+section,
+footer,
+header {
+  position: relative;
+}
+
+.gradient-bg::before,
+header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(90deg, rgba(255, 153, 51, 0.02), rgba(31, 95, 74, 0.015), rgba(255, 153, 51, 0.02));
+}
+
+/* Elegant scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+::-webkit-scrollbar-thumb {
+  background: #eaeae6;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #d1d1cc;
+}
