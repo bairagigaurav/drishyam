@@ -99,7 +99,7 @@ export default function ProductCard({ product }: ProductCardProps) {
       {/* Product Details */}
 <div className="mt-4 flex-1 flex flex-col justify-between">
   <div>
-    <div className="flex justify-between items-center text-xs text-charcoal/60 font-bold uppercase tracking-widest mb-2 pb-2 border-b border-gray-200/30">
+    <div className="flex justify-between items-center text-[10px] text-charcoal/60 font-bold uppercase tracking-widest mb-2 pb-2 border-b border-gray-200/30">
       <span className="text-gray-600">
         {product.shape} {product.category}
       </span>
@@ -125,7 +125,7 @@ export default function ProductCard({ product }: ProductCardProps) {
     <button
       type="button"
       onClick={handleEnquireNow}
-      className="w-full flex items-center justify-center gap-2 rounded-2xl bg-whatsapp hover:bg-whatsapp/90 text-white text-sm font-semibold uppercase tracking-[0.16em] py-3 shadow-lg shadow-whatsapp/20 transition-all hover:scale-[1.01]"
+      className="w-full flex items-center justify-center gap-2 rounded-2xl bg-whatsapp hover:bg-whatsapp/90 text-white text-xs font-semibold uppercase tracking-[0.16em] py-3 shadow-lg shadow-whatsapp/20 transition-all hover:scale-[1.01]"
     >
       <WhatsAppIcon />
       <span>Enquire now</span>
@@ -133,7 +133,7 @@ export default function ProductCard({ product }: ProductCardProps) {
 
     <Link
       href={`/product/${product.slug}`}
-      className="btn-secondary mt-2 w-full flex items-center justify-center gap-2 rounded-xl border border-[#111111] bg-white text-[#111111] text-sm font-semibold uppercase tracking-[0.16em] py-3 shadow-sm transition-all hover:bg-[#111111] hover:text-white"
+      className="btn-secondary mt-2 w-full flex items-center justify-center gap-2 rounded-xl border border-[#111111] bg-white text-[#111111] text-xs font-semibold uppercase tracking-[0.16em] py-3 shadow-sm transition-all hover:bg-[#111111] hover:text-white"
     >
       <span>View Details</span>
     </Link>

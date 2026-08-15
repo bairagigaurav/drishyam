@@ -89,7 +89,7 @@ export default function Newsletter() {
     <section className="relative overflow-hidden bg-[radial-gradient(circle_at_top,_rgba(245,158,11,0.12),transparent_35%),linear-gradient(180deg,#fffaf5_0%,#f7f2ea_100%)] py-20 border-t border-beige-200">
       <div className="absolute inset-0 opacity-30" style={{backgroundImage: "radial-gradient(circle at 20% 20%, rgba(15,23,42,0.05) 0, transparent 30%), radial-gradient(circle at 80% 10%, rgba(245,158,11,0.08) 0, transparent 25%)"}} />
 
-      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative  mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-10 text-center">
           <span className="text-[12px] font-bold uppercase -[0.24em] text-charcoal/60 block mb-3">
             Contact us
@@ -201,6 +201,32 @@ export default function Newsletter() {
                     Send enquiry
                     <Send className="h-4 w-4" />
                   </button>
+                    <div className="rounded-[30px] border border-[#efdcc1] bg-white p-6 shadow-[0_25px_60px_rgba(17,17,17,0.06)]">
+              <h3 className="font-serif text-2xl md:text-3xl text-charcoal mb-5">Visit our store</h3>
+
+              <div className="space-y-5 text-base text-charcoal/75">
+                <div className="flex gap-3 items-start">
+                  <MapPin className="mt-1 h-5 w-5 text-[#f59e0b]" />
+                  <p className="leading-relaxed text-sm">
+                    Shiv Dham Gate, near Prajpat Aata Chakki, Khandwa Road, Limbodi, Indore
+                  </p>
+                </div>
+
+                <div className="flex gap-3 items-center">
+                  <Phone className="h-5 w-5 text-[#f59e0b]" />
+                  <a href="tel:+917999965453" className="hover:text-charcoal transition-colors text-sm">
+                    +91 79999-65453
+                  </a>
+                </div>
+
+                <div className="flex gap-3 items-center">
+                  <Mail className="h-5 w-5 text-[#f59e0b]" />
+                  <a href="mailto:hello@drishyamoptical.com" className="hover:text-charcoal transition-colors text-sm">
+                    hello@drishyamoptical.com
+                  </a>
+                </div>
+              </div>
+            </div>
                 </motion.form>
               ) : (
                 <motion.div
@@ -221,8 +247,8 @@ export default function Newsletter() {
           </motion.div>
 
           <div className="space-y-5">
-            <div className="overflow-hidden rounded-[30px] border border-[#efdcc1] bg-white shadow-[0_25px_60px_rgba(17,17,17,0.06)]">
-              <div className="h-[360px] w-full">
+            <div className="overflow-hidden h-full rounded-[30px] border border-[#efdcc1] bg-white shadow-[0_25px_60px_rgba(17,17,17,0.06)]">
+              <div className="h-full w-full">
                 <iframe
                   title="Drishyam Optical location"
                   src="https://www.google.com/maps?q=Shiv%20Dham%20Gate%2C%20near%20Prajpat%20Aata%20Chakki%2C%20Khandwa%20Road%2C%20Limbodi%2C%20Indore&output=embed"
@@ -236,32 +262,7 @@ export default function Newsletter() {
               </div>
             </div>
 
-            <div className="rounded-[30px] border border-[#efdcc1] bg-white p-6 shadow-[0_25px_60px_rgba(17,17,17,0.06)]">
-              <h3 className="font-serif text-2xl md:text-3xl text-charcoal mb-5">Visit our store</h3>
-
-              <div className="space-y-5 text-base text-charcoal/75">
-                <div className="flex gap-3 items-start">
-                  <MapPin className="mt-1 h-5 w-5 text-[#f59e0b]" />
-                  <p className="leading-relaxed text-[1.05rem]">
-                    Shiv Dham Gate, near Prajpat Aata Chakki, Khandwa Road, Limbodi, Indore
-                  </p>
-                </div>
-
-                <div className="flex gap-3 items-center">
-                  <Phone className="h-5 w-5 text-[#f59e0b]" />
-                  <a href="tel:+917999965453" className="hover:text-charcoal transition-colors text-[1.05rem]">
-                    +91 79999-65453
-                  </a>
-                </div>
-
-                <div className="flex gap-3 items-center">
-                  <Mail className="h-5 w-5 text-[#f59e0b]" />
-                  <a href="mailto:hello@drishyamoptical.com" className="hover:text-charcoal transition-colors text-[1.05rem]">
-                    hello@drishyamoptical.com
-                  </a>
-                </div>
-              </div>
-            </div>
+          
           </div>
         </div>
       </div>
