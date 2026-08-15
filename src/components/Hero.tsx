@@ -95,12 +95,12 @@ export default function Hero() {
               }}
               className="text-left"
             >
-              <div className="inline-flex items-center gap-3 rounded-full border border-[#f59e0b]/40 bg-white/5 px-4 py-2 text-[11px] font-semibold uppercase -[0.28em] text-[#fef3c7] backdrop-blur-sm">
+              <div className="inline-flex max-sm:text-[8px] items-center gap-3 rounded-full border border-[#f59e0b]/40 bg-white/5 px-4 py-2 text-[11px] font-semibold uppercase -[0.28em] text-[#fef3c7] backdrop-blur-sm">
                 <span className="h-2 w-2 rounded-full bg-[#f59e0b]" />
                 {activeSlide.eyebrow || activeSlide.title}
               </div>
 
-              <h1 className="mt-6 font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-white leading-[0.96] -[-0.04em]">
+              <h1 className="mt-6 max-sm:text-2xl font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-white leading-[0.96] -[-0.04em]">
                 {siteContent.hero.headline}
               </h1>
 
@@ -110,14 +110,14 @@ export default function Hero() {
                 </div>
               )}
 
-              <p className="mt-6 max-w-xl text-base sm:text-lg text-slate-100 leading-relaxed">
+              <p className="mt-6 max-sm:mt-2 max-sm:text-xs max-w-xl text-base sm:text-lg text-slate-100 leading-relaxed">
                 {activeSlide.subtitle} — {siteContent.hero.description}
               </p>
 
-              <div className="mt-8 flex flex-col sm:flex-row gap-2">
+              <div className="mt-8 max-sm:mt-2 flex flex-col sm:flex-row gap-2">
                 <Link
                   href="/shop"
-                  className="btn-primary inline-flex items-center justify-center gap-2 rounded-xl border border-[#f59e0b] px-7 py-3.5 text-sm font-bold uppercase -[0.2em] text-white transition-transform duration-200 hover:scale-[1.02]"
+                  className="btn-primary max-sm:text-xs inline-flex items-center justify-center gap-2 rounded-xl border border-[#f59e0b] px-7 py-3.5 text-sm font-bold uppercase -[0.2em] text-white transition-transform duration-200 hover:scale-[1.02]"
                 >
                   {activeSlide.primaryLabel || "See All Collections"}
                   <ArrowRight className="w-4 h-4" />
@@ -125,14 +125,14 @@ export default function Hero() {
 
                 <Link
                   href="/shop"
-                  className="btn-secondary inline-flex items-center justify-center gap-2 rounded-xl bg-[#f59e0b] px-7 py-3.5 text-sm font-bold uppercase -[0.2em] text-[#111827] shadow-[0_18px_35px_rgba(245,158,11,0.35)] transition-transform duration-200 hover:scale-[1.02]"
+                  className="btn-secondary max-sm:text-xs inline-flex items-center justify-center gap-2 rounded-xl bg-[#f59e0b] px-7 py-3.5 text-sm font-bold uppercase -[0.2em] text-[#111827] shadow-[0_18px_35px_rgba(245,158,11,0.35)] transition-transform duration-200 hover:scale-[1.02]"
                 >
                   {activeSlide.secondaryLabel || "Enquire Now"}
                   <ArrowRight className="w-4 h-4" />
                 </Link>
               </div>
 
-              <div className="mt-8 flex flex-wrap gap-4 text-sm text-slate-200/90">
+              <div className="mt-8 max-sm:mt-3 max-sm:gap-2 flex flex-wrap gap-4 max-sm:text-xs text-sm text-slate-200/90">
                 {siteContent.hero.badges.map((badge) => (
                   <span
                     key={badge}
