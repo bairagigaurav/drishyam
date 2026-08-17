@@ -19,7 +19,7 @@ export const defaultProducts: Product[] = [
       { name: "Clear Crystal", hex: "#e2e8f0" }
     ],
     images: [
-      "https://images.unsplash.com/photo-1577803947579-9f2d05d7f9cf?q=80&w=800&auto=format&fit=crop",
+      "https://res.cloudinary.com/bc06zmzq/image/upload/v1787046677/20260411_213355.webp",
       "https://images.unsplash.com/photo-1523170335258-f5ed11844a49?q=80&w=800&auto=format&fit=crop"
     ],
     gender: "Unisex",

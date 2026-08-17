@@ -45,8 +45,8 @@ export default function Hero() {
 
   const activeSlide = slides[activeIndex] ?? slides[0];
   const sharedSlideTransition = {
-    duration: 0.8,
-    ease: [0.4, 0, 0.2, 1] as const,
+    duration: 1.4,
+    ease: [0.25, 0.46, 0.45, 0.94] as const,
   };
 
   if (!activeSlide) return null;
@@ -100,8 +100,8 @@ export default function Hero() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{
-                duration: 0.75,
-                ease: [0.4, 0, 0.2, 1],
+                duration: 1.2,
+                ease: [0.25, 0.46, 0.45, 0.94],
               }}
               className="text-left"
             >
