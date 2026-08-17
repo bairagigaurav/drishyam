@@ -6,6 +6,7 @@ import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { DEFAULT_SITE_CONTENT, getSiteContent } from "@/lib/site-content";
+import { makeWhatsAppUrl } from "@/lib/whatsapp";
 
 export default function Hero() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -47,6 +48,10 @@ export default function Hero() {
   const sharedSlideTransition = {
     duration: 1.4,
     ease: [0.25, 0.46, 0.45, 0.94] as const,
+  };
+
+  const handleEnquireNow = () => {
+    window.open(makeWhatsAppUrl([]), "_blank", "noopener,noreferrer");
   };
 
   if (!activeSlide) return null;
@@ -133,13 +138,14 @@ export default function Hero() {
                   <ArrowRight className="w-4 h-4" />
                 </Link>
 
-                <Link
-                  href="/shop"
+                <button
+                  type="button"
+                  onClick={handleEnquireNow}
                   className="btn-secondary max-sm:text-xs inline-flex items-center justify-center gap-2 rounded-xl bg-[#f59e0b] px-7 py-3.5 text-sm font-bold uppercase -[0.2em] text-[#111827] shadow-[0_18px_35px_rgba(245,158,11,0.35)] transition-transform duration-200 hover:scale-[1.02]"
                 >
                   {activeSlide.secondaryLabel || "Enquire Now"}
                   <ArrowRight className="w-4 h-4" />
-                </Link>
+                </button>
               </div>
 
               <div className="mt-8 max-sm:mt-3 max-sm:gap-2 flex flex-wrap gap-4 max-sm:text-xs text-sm text-slate-200/90">

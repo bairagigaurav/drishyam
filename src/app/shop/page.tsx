@@ -97,11 +97,7 @@ function ShopContent() {
     }
 
     // Sort products
-    if (sortBy === "price-low") {
-      result.sort((a, b) => a.price - b.price);
-    } else if (sortBy === "price-high") {
-      result.sort((a, b) => b.price - a.price);
-    } else if (sortBy === "rating") {
+    if (sortBy === "rating") {
       result.sort((a, b) => b.rating - a.rating);
     }
 
@@ -150,8 +146,6 @@ function ShopContent() {
               className="bg-transparent text-charcoal font-semibold focus:outline-hidden outline-hidden cursor-pointer appearance-none pr-6 border-0 focus:ring-0"
             >
               <option value="featured">Featured</option>
-              <option value="price-low">Price: Low to High</option>
-              <option value="price-high">Price: High to Low</option>
               <option value="rating">Top Rated</option>
             </select>
             <ChevronDown className="w-3.5 h-3.5 text-charcoal absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none" />

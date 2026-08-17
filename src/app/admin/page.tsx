@@ -540,10 +540,21 @@ export default function AdminPage() {
     const name = newProduct.name.trim();
     const slug = newProduct.slug.trim();
     const price = Number(newProduct.price);
-    if (!name || !slug || !newProduct.image.trim() || !Number.isFinite(price) || price <= 0) {
-      setToastMessage("Please fill in all required fields (Name, Slug, Image, Price).");
+    const imageUrls = newProduct.image
+      .split(",")
+      .map((value) => value.trim())
+      .filter(Boolean);
+
+    if (!name || !slug || imageUrls.length === 0 || !Number.isFinite(price) || price <= 0) {
+      setToastMessage("Please fill in all required fields (Name, Slug, Image, Price). Use a direct image URL or two URLs separated by commas.");
       return;
     }
+
+    const uniqueImageUrls = [...new Set(imageUrls)].slice(0, 2);
+    const galleryImages = uniqueImageUrls.length === 1
+      ? [uniqueImageUrls[0], uniqueImageUrls[0]]
+      : uniqueImageUrls;
+
     const product: Product = {
       id: `frame-${Date.now()}`,
       name,
@@ -554,7 +565,7 @@ export default function AdminPage() {
       rating: 4.8,
       reviewsCount: 0,
       colors: [{ name: "Default", hex: "#111111" }],
-      images: [newProduct.image.trim(), newProduct.image.trim()],
+      images: galleryImages,
       gender: newProduct.gender,
       material: newProduct.material,
       size: newProduct.size,

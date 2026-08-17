@@ -16,7 +16,7 @@ export default function ImageUploader({
   value,
   onChange,
   label = "Image",
-  placeholder = "https://images.unsplash.com/… or upload local file",
+  placeholder = "https://images.unsplash.com/... or paste a second direct URL separated by a comma",
   aspectRatio = "video",
   className = "",
 }: ImageUploaderProps) {

@@ -30,7 +30,6 @@ export default function MobileMenu() {
     { name: "Sunglasses", href: "/shop?category=Sunglasses" },
     { name: "New Arrivals", href: "/shop?new=true" },
     { name: "Best Sellers", href: "/shop?best=true" },
-    { name: "Face Shape Finder", href: "/face-shape" },
     { name: "Admin Dashboard", href: "/admin", highlight: true },
   ];
 

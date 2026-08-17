@@ -90,7 +90,7 @@ export default function ProductDetailPage({ params }: PageProps) {
     }
   };
 
-  const handleBuyNow = () => {
+  const handleEnquireNow = () => {
     if (selectedColor) {
       const item: CartItem = {
         product,
@@ -102,9 +102,22 @@ export default function ProductDetailPage({ params }: PageProps) {
 
       const whatsappUrl = makeWhatsAppUrl([item]);
 
-      window.open(whatsappUrl, "_blank");
+      window.open(whatsappUrl, "_blank", "noopener,noreferrer");
     }
   };
+
+  function WhatsAppIcon() {
+    return (
+      <svg
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+        className="h-5 w-5"
+        fill="currentColor"
+      >
+        <path d="M20.52 3.48A11.64 11.64 0 0 0 12.02 0C5.48 0 .14 5.31.14 11.85c0 2.09.55 4.13 1.6 5.93L.06 24l6.4-1.66a11.9 11.9 0 0 0 5.56 1.65h.01c6.54 0 11.88-5.31 11.88-11.85 0-3.17-1.24-6.15-3.39-8.37ZM12.02 21.6c-1.79 0-3.55-.48-5.08-1.39l-.36-.22-3.8.99 1.02-3.7-.24-.38A9.75 9.75 0 0 1 2.22 11.85C2.22 6.77 6.38 2.62 12.02 2.62c5.65 0 10.25 4.15 10.25 9.23 0 5.08-4.6 9.23-10.25 9.23Zm5.64-6.9c-.31-.16-1.81-.89-2.1-1-.28-.12-.49-.16-.7.16-.2.31-.78 1-.96 1.2-.18.16-.35.18-.66.06-.3-.16-1.28-.47-2.43-1.5-.9-.81-1.5-1.8-1.68-2.1-.18-.31-.02-.47.14-.62.14-.14.31-.35.46-.53.15-.17.2-.29.3-.48.1-.2.05-.37-.02-.52-.08-.16-.7-1.71-.96-2.34-.26-.62-.52-.53-.7-.54l-.6-.01c-.2 0-.53.08-.81.38-.28.31-1.07 1.05-1.07 2.56 0 1.52 1.1 2.96 1.26 3.17.16.2 2.17 3.31 5.26 4.64.74.32 1.32.51 1.77.66.74.24 1.42.2 1.95.13.6-.09 1.81-.74 2.07-1.46.25-.71.25-1.33.17-1.46-.08-.13-.28-.2-.58-.36Z" />
+      </svg>
+    );
+  }
 
   // Recommended products (filter same category, limit 4)
   const recommendations = allProducts
@@ -230,30 +243,6 @@ export default function ProductDetailPage({ params }: PageProps) {
                 </div>
 
                 <div className="space-y-6 py-6">
-                  <div className="flex items-end gap-3">
-                    <span className="text-4xl font-semibold tracking-tight text-charcoal">
-                      ₹{product.price}
-                    </span>
-
-                    {product.originalPrice ? (
-                      <span className="text-lg text-charcoal/40 line-through">
-                        ₹{product.originalPrice}
-                      </span>
-                    ) : null}
-
-                    {product.originalPrice ? (
-                      <span className="mb-1 inline-flex rounded-full bg-emerald-100 px-2 py-1 text-[10px] font-bold uppercase tracking-[0.2em] text-emerald-700">
-                        Save{" "}
-                        {Math.round(
-                          ((product.originalPrice - product.price) /
-                            product.originalPrice) *
-                            100
-                        )}
-                        %
-                      </span>
-                    ) : null}
-                  </div>
-
                   {/* Color selector intentionally kept commented out */}
 
                   <div className="grid grid-cols-3 gap-3">
@@ -305,10 +294,11 @@ export default function ProductDetailPage({ params }: PageProps) {
                     </div>
 
                     <button
-                      onClick={handleBuyNow}
-                      className="w-full rounded-full border border-charcoal/20 bg-white px-5 py-3.5 text-sm font-semibold uppercase tracking-[0.18em] text-charcoal transition hover:bg-charcoal hover:text-white"
+                      onClick={handleEnquireNow}
+                      className="w-full flex items-center justify-center gap-2 rounded-2xl bg-whatsapp hover:bg-whatsapp/90 text-white text-xs font-semibold uppercase tracking-[0.16em] py-3 shadow-lg shadow-whatsapp/20 transition-all hover:scale-[1.01]"
                     >
-                      Buy now
+                      <WhatsAppIcon />
+                      Enquire now
                     </button>
                   </div>
                 </div>
@@ -334,7 +324,7 @@ export default function ProductDetailPage({ params }: PageProps) {
           </div>
         </section>
 
-        <section className="border-y border-beige-100 bg-beige-50/30 py-16">
+        {/* <section className="border-y border-beige-100 bg-beige-50/30 py-16">
           <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
             <div className="grid gap-8 lg:grid-cols-[1.2fr_0.8fr]">
               <div className="rounded-[28px] border border-beige-100 bg-white p-5 sm:p-7">
@@ -474,7 +464,7 @@ export default function ProductDetailPage({ params }: PageProps) {
               </div>
             </div>
           </div>
-        </section>
+        </section> */}
 
         {recommendations.length > 0 && (
           <section className="bg-white py-20">

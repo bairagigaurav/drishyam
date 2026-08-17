@@ -49,7 +49,7 @@ export default function ProductCard({ product }: ProductCardProps) {
     <div
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className="group relative flex flex-col bg-gradient-to-br from-white via-white to-gold-50 border-2 border-gold-200/30 p-4 rounded-3xl overflow-hidden shadow-md hover:shadow-[0_20px_60px_rgba(212,175,55,0.15)] transition-all duration-500 hover:border-gold-500/40 transform hover:scale-105 hover:-translate-y-1"
+      className="group relative flex w-full max-w-full flex-col bg-gradient-to-br from-white via-white to-gold-50 border-2 border-gold-200/30 p-3 sm:p-4 rounded-3xl overflow-hidden shadow-md hover:shadow-[0_20px_60px_rgba(212,175,55,0.15)] transition-all duration-500 hover:border-gold-500/40 transform hover:scale-105 hover:-translate-y-1"
     >
       
       {/* Wishlist Button */}
@@ -79,10 +79,10 @@ export default function ProductCard({ product }: ProductCardProps) {
         </div>
 
         {/* Quick Add Overlay with gradient */}
-        <div className="absolute inset-x-0 bottom-0 p-3 bg-gradient-to-t from-charcoal/90 via-charcoal/50 to-transparent flex gap-2 justify-center opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 z-10">
+        <div className="absolute inset-x-0 bottom-0 z-10 flex gap-2 justify-center p-3 bg-gradient-to-t from-charcoal/90 via-charcoal/50 to-transparent opacity-100 translate-y-0 sm:opacity-0 sm:translate-y-4 sm:group-hover:opacity-100 sm:group-hover:translate-y-0 transition-all duration-300">
           <button
             onClick={handleQuickAdd}
-            className="btn-primary flex-1 rounded-xl bg-gradient-to-r from-saffron to-orange-500 hover:from-saffron/90 hover:to-orange-500/90 text-white py-2 px-3 text-[12px] font-semibold uppercase -[0.18em] flex items-center justify-center gap-2 transition-all border border-gold-400/50 shadow-lg"
+            className="btn-primary flex-1 rounded-xl bg-gradient-to-r from-saffron to-orange-500 hover:from-saffron/90 hover:to-orange-500/90 text-white py-2 px-3 text-[11px] sm:text-[12px] font-semibold uppercase -[0.18em] flex items-center justify-center gap-1.5 sm:gap-2 transition-all border border-gold-400/50 shadow-lg"
           >
             <ShoppingBag className="w-3.5 h-3.5" />
             <span>Quick Add</span>
@@ -113,7 +113,7 @@ export default function ProductCard({ product }: ProductCardProps) {
     </div>
 
     <div className="flex items-center justify-between">
-      <h3 className="font-bold text-lg text-charcoal leading-tight group-hover:text-saffron transition-colors line-clamp-2 mb-2">
+      <h3 className="font-bold text-base sm:text-lg text-charcoal leading-tight group-hover:text-saffron transition-colors line-clamp-2 mb-2">
         <Link href={`/product/${product.slug}`}>
           {product.name}
         </Link>
@@ -125,7 +125,7 @@ export default function ProductCard({ product }: ProductCardProps) {
     <button
       type="button"
       onClick={handleEnquireNow}
-      className="w-full flex items-center justify-center gap-2 rounded-2xl bg-whatsapp hover:bg-whatsapp/90 text-white text-xs font-semibold uppercase tracking-[0.16em] py-3 shadow-lg shadow-whatsapp/20 transition-all hover:scale-[1.01]"
+      className="w-full flex items-center justify-center gap-2 rounded-2xl bg-whatsapp hover:bg-whatsapp/90 text-white text-[10px] sm:text-xs font-semibold uppercase tracking-[0.14em] sm:tracking-[0.16em] py-2.5 sm:py-3 shadow-lg shadow-whatsapp/20 transition-all hover:scale-[1.01]"
     >
       <WhatsAppIcon />
       <span>Enquire now</span>
@@ -133,7 +133,7 @@ export default function ProductCard({ product }: ProductCardProps) {
 
     <Link
       href={`/product/${product.slug}`}
-      className="btn-secondary mt-2 w-full flex items-center justify-center gap-2 rounded-xl border border-[#111111] bg-white text-[#111111] text-xs font-semibold uppercase tracking-[0.16em] py-3 shadow-sm transition-all hover:bg-[#111111] hover:text-white"
+      className="btn-secondary mt-2 w-full flex items-center justify-center gap-2 rounded-xl border border-[#111111] bg-white text-[#111111] text-[10px] sm:text-xs font-semibold uppercase tracking-[0.14em] sm:tracking-[0.16em] py-2.5 sm:py-3 shadow-sm transition-all hover:bg-[#111111] hover:text-white"
     >
       <span>View Details</span>
     </Link>
