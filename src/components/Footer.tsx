@@ -3,6 +3,8 @@ import Link from "next/link";
 import BrandLogo from "@/components/BrandLogo";
 
 export default function Footer() {
+  const CURRENT_YEAR = 2026;
+
   const shopLinks = [
     { name: "All Eyewear", href: "/shop" },
     { name: "Eyeglasses", href: "/shop?category=Eyeglasses" },
@@ -107,7 +109,7 @@ export default function Footer() {
 
         {/* Bottom copyright alignment */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 font-light text-[13px] text-charcoal/50">
-          <p>&copy; {new Date().getFullYear()} DRISHYAM OPTICAL. All rights reserved.</p>
+          <p>&copy; {CURRENT_YEAR} DRISHYAM OPTICAL. All rights reserved.</p>
           <div className="flex gap-6">
             <a href="#" className="hover:text-charcoal transition-colors">Privacy Policy</a>
             <a href="#" className="hover:text-charcoal transition-colors">Terms of Service</a>

@@ -112,7 +112,7 @@ const validateCategory = (cat: SiteContent["categories"][number]) => {
 const defaultSale = {
   customerName: "", product: "", amount: "", phone: "", notes: "",
   status: "Paid" as OfflineSaleRecord["status"],
-  date: new Date().toISOString().slice(0, 10),
+  date: "",
 };
 
 const defaultNewProduct = {

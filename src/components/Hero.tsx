@@ -12,7 +12,22 @@ export default function Hero() {
   const [siteContent, setSiteContent] = useState(DEFAULT_SITE_CONTENT);
 
   useEffect(() => {
-    setSiteContent(getSiteContent());
+    const sync = () => {
+      setSiteContent(getSiteContent());
+    };
+
+    if (typeof window !== "undefined") {
+      sync();
+      window.addEventListener("storage", sync);
+      window.addEventListener("drishyam:content-update", sync);
+    }
+
+    return () => {
+      if (typeof window !== "undefined") {
+        window.removeEventListener("storage", sync);
+        window.removeEventListener("drishyam:content-update", sync);
+      }
+    };
   }, []);
 
   const slides =
@@ -29,6 +44,10 @@ export default function Hero() {
   }, [slides.length]);
 
   const activeSlide = slides[activeIndex] ?? slides[0];
+  const sharedSlideTransition = {
+    duration: 0.8,
+    ease: [0.4, 0, 0.2, 1] as const,
+  };
 
   if (!activeSlide) return null;
 
@@ -39,7 +58,7 @@ export default function Hero() {
         {/* ================= BACKGROUND IMAGE ================= */}
         <AnimatePresence initial={false} mode="sync">
           <motion.div
-            key={`bg-${activeIndex}`}
+            key={`slide-${activeIndex}`}
             initial={{
               opacity: 0,
               scale: 1.04,
@@ -52,16 +71,7 @@ export default function Hero() {
               opacity: 0,
               scale: 1.02,
             }}
-            transition={{
-              opacity: {
-                duration: 0.8,
-                ease: [0.4, 0, 0.2, 1],
-              },
-              scale: {
-                duration: 1.2,
-                ease: [0.4, 0, 0.2, 1],
-              },
-            }}
+            transition={sharedSlideTransition}
             className="absolute inset-0"
           >
             <Image
@@ -167,27 +177,12 @@ export default function Hero() {
                           opacity: 0,
                           scale: 1.02,
                         }}
-                        transition={{
-                          opacity: {
-                            duration: 0.8,
-                            ease: [0.4, 0, 0.2, 1],
-                          },
-                          scale: {
-                            duration: 1.2,
-                            ease: [0.4, 0, 0.2, 1],
-                          },
-                        }}
+                        transition={sharedSlideTransition}
                         className="absolute inset-0"
                       >
                         <Image
-                          src={
-                            slides[(activeIndex + 1) % slides.length]?.image ??
-                            activeSlide.image
-                          }
-                          alt={
-                            slides[(activeIndex + 1) % slides.length]?.alt ??
-                            activeSlide.alt
-                          }
+                          src={activeSlide.image}
+                          alt={activeSlide.alt}
                           fill
                           unoptimized
                           className="object-cover"

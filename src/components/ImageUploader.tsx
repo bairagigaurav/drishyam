@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useRef, useState } from "react";
-import { Upload, Link as LinkIcon, X, CheckCircle, Image as ImageIcon, Loader2 } from "lucide-react";
+import { Upload, Link as LinkIcon, CheckCircle, Loader2 } from "lucide-react";
 import { compressImageFile } from "@/lib/image-compressor";
 
 export interface ImageUploaderProps {
@@ -22,6 +22,7 @@ export default function ImageUploader({
   className = "",
 }: ImageUploaderProps) {
   const [tab, setTab] = useState<"upload" | "url">("upload");
+  const [urlText, setUrlText] = useState(() => (value && !value.startsWith("data:") ? value : ""));
   const [isCompressing, setIsCompressing] = useState(false);
   const [dragOver, setDragOver] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -38,8 +39,9 @@ export default function ImageUploader({
       setIsCompressing(true);
       const dataUrl = await compressImageFile(file);
       onChange(dataUrl);
-    } catch (err: any) {
-      setError(err?.message || "Failed to process image file.");
+    } catch (err: unknown) {
+      const message = err instanceof Error ? err.message : "Failed to process image file.";
+      setError(message);
     } finally {
       setIsCompressing(false);
     }
@@ -67,6 +69,30 @@ export default function ImageUploader({
     banner: "aspect-[21/9]",
   }[aspectRatio];
 
+  const isLikelyHttpUrl = (input: string) => /^https?:\/\//i.test(input.trim());
+
+  const handleUrlValue = (rawValue: string) => {
+    const nextValue = rawValue.trim();
+    setUrlText(nextValue);
+    setError(null);
+
+    if (!nextValue) {
+      onChange("");
+      return;
+    }
+
+    if (nextValue.startsWith("data:")) {
+      onChange(nextValue);
+      return;
+    }
+
+    if (!isLikelyHttpUrl(nextValue)) {
+      setError("Please enter a valid image URL starting with http:// or https://");
+    }
+
+    onChange(nextValue);
+  };
+
   return (
     <div className={`space-y-2 ${className}`}>
       {/* Header & Tabs */}
@@ -76,7 +102,7 @@ export default function ImageUploader({
             {label}
           </span>
         )}
-        <div className="flex rounded-lg border border-[#eadcc6] bg-[#fffaf5] p-0.5 text-[10px] font-bold uppercase -[0.14em]">
+        <div className="flex rounded-lg border border-[#eadcc6] bg-[#fffaf5] p-0.5 text-[10px] font-bold uppercase">
           <button
             type="button"
             onClick={() => {
@@ -117,6 +143,7 @@ export default function ImageUploader({
             ref={fileInputRef}
             type="file"
             accept="image/*"
+            value=""
             onChange={onFileInputChange}
             className="hidden"
           />
@@ -159,10 +186,15 @@ export default function ImageUploader({
         <div>
           <input
             type="text"
-            value={value.startsWith("data:") ? "" : value}
-            onChange={(e) => {
-              setError(null);
-              onChange(e.target.value);
+            value={urlText}
+            onChange={(e) => handleUrlValue(e.target.value)}
+            onBlur={() => {
+              const trimmed = urlText.trim();
+              setUrlText(trimmed);
+              if (trimmed && !trimmed.startsWith("data:") && !isLikelyHttpUrl(trimmed)) {
+                setError("Please enter a valid image URL starting with http:// or https://");
+              }
+              onChange(trimmed);
             }}
             placeholder={placeholder}
             className="w-full rounded-xl border border-[#eadcc6] bg-[#fffdf9] px-3.5 py-2.5 text-sm text-[#111111] outline-none transition focus:border-[#f59e0b] focus:ring-2 focus:ring-[#f59e0b]/20"
@@ -181,7 +213,14 @@ export default function ImageUploader({
               src={value}
               alt="Preview"
               className="h-full w-full object-cover"
-              onError={() => setError("Image failed to load. Please verify file or URL.")}
+              onLoad={() => setError(null)}
+              onError={() => {
+                if (value.startsWith("http")) {
+                  setError("Preview is blocked by the remote host, but the URL is still saved. Try a direct image URL if needed.");
+                  return;
+                }
+                setError("Image failed to load. Please verify file or URL.");
+              }}
             />
           </div>
 

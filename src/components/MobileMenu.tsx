@@ -8,6 +8,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import BrandLogo from "@/components/BrandLogo";
 
 export default function MobileMenu() {
+  const CURRENT_YEAR = 2026;
   const { isMobileMenuOpen, setMobileMenuOpen, cartCount, setSearchOpen, setCartOpen } = useApp();
 
   useEffect(() => {
@@ -112,7 +113,7 @@ export default function MobileMenu() {
 
             {/* Footer */}
             <div className="pt-6 border-t border-beige-100 text-center text-xs text-charcoal/40">
-              <p>&copy; {new Date().getFullYear()} DRISHYAM OPTICAL.</p>
+              <p>&copy; {CURRENT_YEAR} DRISHYAM OPTICAL.</p>
               <p className="mt-0.5">Handcrafted Luxury Eyewear</p>
             </div>
           </motion.div>
