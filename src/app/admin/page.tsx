@@ -42,6 +42,7 @@ import {
 } from "lucide-react";
 import {
   getStoredProducts,
+  hydrateProducts,
   saveProducts,
   deleteProductFromCatalog,
   clearAllCatalogProducts,
@@ -52,6 +53,7 @@ import {
   DEFAULT_SITE_CONTENT,
   getOnboardingLeads,
   getSiteContent,
+  hydrateSiteContent,
   saveSiteContent,
   type OfflineSaleRecord,
   type SiteContent,
@@ -67,7 +69,7 @@ import ImageUploader from "@/components/ImageUploader";
 const AUTH_KEY = "drishyam_admin_auth";
 
 /* ─── Types ─── */
-type DashboardTab = "overview" | "banner" | "categories" | "cards" | "customers" | "sales";
+type DashboardTab = "overview" | "banner" | "categories" | "cards" | "customers";
 
 const tabs: Array<{ id: DashboardTab; label: string; icon: typeof LayoutDashboard }> = [
   { id: "overview", label: "Overview", icon: LayoutDashboard },
@@ -75,7 +77,7 @@ const tabs: Array<{ id: DashboardTab; label: string; icon: typeof LayoutDashboar
   { id: "categories", label: "Categories & Products", icon: Tag },
   { id: "cards", label: "Cards & Content", icon: Layers },
   { id: "customers", label: "Customers", icon: Users },
-  { id: "sales", label: "Sales", icon: ShoppingBag },
+  // { id: "sales", label: "Sales", icon: ShoppingBag },
 ];
 
 const AVAILABLE_ICONS = [
@@ -293,6 +295,10 @@ export default function AdminPage() {
     setProductList(getStoredProducts());
     setLeads(getOnboardingLeads());
     setIsHydrated(true);
+    void Promise.all([hydrateSiteContent(), hydrateProducts()]).then(([remoteContent, remoteProducts]) => {
+      setContent(remoteContent);
+      setProductList(remoteProducts);
+    });
   }, []);
 
   useEffect(() => {
@@ -705,7 +711,7 @@ export default function AdminPage() {
             <div className="mt-6 flex justify-end gap-3">
               <button
                 onClick={() => setConfirmAction(null)}
-                className="rounded-xl border border-[#eadcc6] bg-[#fffaf5] px-5 py-2.5 text-xs font-bold uppercase -[0.2em]"
+                className="rounded-xl border border-[#eadcc6] bg-[#fffaf5] px-5 py-2.5 text-xs font-bold uppercase -[0.2em] cursor-pointer"
               >
                 Cancel
               </button>
@@ -1268,7 +1274,7 @@ export default function AdminPage() {
                         <button
                           type="button"
                           onClick={handleAddProduct}
-                          className="inline-flex items-center gap-2 rounded-xl bg-[#f59e0b] px-6 py-3 text-xs font-bold uppercase -[0.2em] text-[#111111] hover:bg-[#e08d00] transition-colors shadow-sm"
+                          className="inline-flex items-center gap-2 rounded-xl bg-[#f59e0b] cursor-pointer px-6 py-3 text-xs font-bold uppercase -[0.2em] text-[#111111] hover:bg-[#e08d00] transition-colors shadow-sm"
                         >
                           <Plus className="h-4 w-4" />
                           Save Product to Catalogue
@@ -1807,7 +1813,7 @@ export default function AdminPage() {
             )}
 
             {/* ══ 6. SALES TAB ══ */}
-            {activeTab === "sales" && (
+            {/* {activeTab === "sales" && (
               <section className="grid gap-6 xl:grid-cols-[0.9fr_1.1fr]">
                 <div className="rounded-[28px] border border-[#eadcc6] bg-white p-5 sm:p-6 shadow-[0_20px_55px_rgba(17,17,17,0.04)]">
                   <p className="text-[10px] font-bold uppercase -[0.22em] text-[#a55d00]">Record Transaction</p>
@@ -1952,7 +1958,7 @@ export default function AdminPage() {
                   )}
                 </div>
               </section>
-            )}
+            )} */}
           </div>
         </div>
       </div>

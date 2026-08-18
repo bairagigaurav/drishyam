@@ -1,4 +1,5 @@
 import { categories as defaultCategories } from "@/data/categories";
+import { supabase } from "@/lib/supabase";
 
 export interface BannerSlide {
   id: string;
@@ -303,6 +304,32 @@ export function saveSiteContent(content: SiteContent) {
   if (typeof window === "undefined") return;
   window.localStorage.setItem(SITE_CONTENT_KEY, JSON.stringify(content));
   notifySiteContentUpdate();
+
+  if (supabase) {
+    void supabase
+      .from("site_data")
+      .update({ content, updated_at: new Date().toISOString() })
+      .eq("id", "main");
+  }
+}
+
+export async function hydrateSiteContent() {
+  if (!supabase) return getSiteContent();
+
+  const { data, error } = await supabase
+    .from("site_data")
+    .select("content")
+    .eq("id", "main")
+    .maybeSingle();
+
+  if (error || !data?.content || typeof data.content !== "object") return getSiteContent();
+
+  const remoteContent = mergeContent(data.content as Partial<SiteContent>);
+  if (typeof window !== "undefined") {
+    window.localStorage.setItem(SITE_CONTENT_KEY, JSON.stringify(remoteContent));
+    notifySiteContentUpdate();
+  }
+  return remoteContent;
 }
 
 export function getSales(): OfflineSaleRecord[] {

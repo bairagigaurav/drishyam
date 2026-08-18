@@ -9,7 +9,7 @@ import FilterSidebar from "@/components/FilterSidebar";
 import SearchModal from "@/components/SearchModal";
 import MobileMenu from "@/components/MobileMenu";
 import CartDrawer from "@/components/CartDrawer";
-import { getStoredProducts, products as initialProducts } from "@/data/products";
+import { getStoredProducts, hydrateProducts, products as initialProducts } from "@/data/products";
 import { Product } from "@/types/product";
 import { SlidersHorizontal, ChevronDown } from "lucide-react";
 
@@ -39,7 +39,7 @@ function ShopContent() {
     const sync = () => {
       setAllProductsList(getStoredProducts());
     };
-    sync();
+    void hydrateProducts().then(setAllProductsList);
     window.addEventListener("storage", sync);
     window.addEventListener("drishyam:products-update", sync);
     return () => {

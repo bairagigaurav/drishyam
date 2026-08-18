@@ -1,4 +1,5 @@
 import { Product } from "@/types/product";
+import { supabase } from "@/lib/supabase";
 
 const PRODUCT_STORAGE_KEY = "drishyam_products";
 
@@ -221,6 +222,33 @@ export function saveProducts(nextProducts: Product[]) {
 
     notifyProductsUpdate();
   }
+
+  if (supabase) {
+    void supabase
+      .from("site_data")
+      .update({ products: nextProducts, updated_at: new Date().toISOString() })
+      .eq("id", "main");
+  }
+}
+
+export async function hydrateProducts() {
+  if (!supabase) return getStoredProducts();
+
+  const { data, error } = await supabase
+    .from("site_data")
+    .select("products")
+    .eq("id", "main")
+    .maybeSingle();
+
+  if (error || !Array.isArray(data?.products)) return getStoredProducts();
+
+  const remoteProducts = data.products as Product[];
+  products = remoteProducts;
+  if (typeof window !== "undefined") {
+    window.localStorage.setItem(PRODUCT_STORAGE_KEY, JSON.stringify(remoteProducts));
+    notifyProductsUpdate();
+  }
+  return remoteProducts;
 }
 
 export function addProductToCatalog(product: Product) {

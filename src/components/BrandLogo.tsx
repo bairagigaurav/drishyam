@@ -6,13 +6,17 @@ import Image from "next/image";
 import brandLogo from "../../public/assets/brand-logo.webp";
 
 export interface BrandLogoProps {
+  variant?: "full";
   size?: "sm" | "md" | "lg" | "xl";
+  theme?: "light" | "dark";
   href?: string;
   className?: string;
 }
 
 export default function BrandLogo({
+  variant = "full",
   size = "md",
+  theme = "light",
   href = "/",
   className = "",
 }: BrandLogoProps) {
@@ -25,6 +29,8 @@ export default function BrandLogo({
 
   const content = (
     <div
+      data-variant={variant}
+      data-theme={theme}
       className={`inline-flex items-center justify-center ${className}`}
     >
       <Image

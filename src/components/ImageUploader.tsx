@@ -1,7 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
-import { Link as LinkIcon, CheckCircle } from "lucide-react";
+import React, { useRef, useState } from "react";
+import { Link as LinkIcon, CheckCircle, Upload } from "lucide-react";
+import { compressImageFile } from "@/lib/image-compressor";
+import { supabase } from "@/lib/supabase";
 
 export interface ImageUploaderProps {
   value: string;
@@ -22,6 +24,8 @@ export default function ImageUploader({
 }: ImageUploaderProps) {
   const [urlText, setUrlText] = useState(() => (value && !value.startsWith("data:") ? value : ""));
   const [error, setError] = useState<string | null>(null);
+  const [isUploading, setIsUploading] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const aspectClass = {
     video: "aspect-[16/9]",
@@ -54,6 +58,35 @@ export default function ImageUploader({
     onChange(nextValue);
   };
 
+  const handleFileUpload = async (file: File) => {
+    setError(null);
+    if (!supabase) {
+      setError("Supabase is not configured. Add the public environment variables before uploading.");
+      return;
+    }
+
+    setIsUploading(true);
+    try {
+      const compressedImage = await compressImageFile(file);
+      const response = await fetch(compressedImage);
+      const imageBlob = await response.blob();
+      const filePath = `admin/${crypto.randomUUID()}.jpg`;
+      const { error: uploadError } = await supabase.storage
+        .from("site-images")
+        .upload(filePath, imageBlob, { contentType: "image/jpeg", upsert: false });
+
+      if (uploadError) throw uploadError;
+
+      const { data } = supabase.storage.from("site-images").getPublicUrl(filePath);
+      setUrlText(data.publicUrl);
+      onChange(data.publicUrl);
+    } catch (uploadError) {
+      setError(uploadError instanceof Error ? uploadError.message : "Image upload failed.");
+    } finally {
+      setIsUploading(false);
+    }
+  };
+
   return (
     <div className={`space-y-2 ${className}`}>
       {/* Header & Tabs */}
@@ -64,12 +97,33 @@ export default function ImageUploader({
           </span>
         )}
         <div className="flex rounded-lg border border-blue-300 bg-blue-50/80 p-0.5 text-[10px] font-bold uppercase">
-          <div className="text-blue-700 px-3 py-1.5 flex items-center gap-1 font-semibold">
+          <button
+            type="button"
+            onClick={() => fileInputRef.current?.click()}
+            disabled={isUploading}
+            className="text-blue-700 px-3 py-1.5 flex items-center gap-1 font-semibold disabled:opacity-50"
+          >
+            <Upload className="h-3 w-3" />
+            {isUploading ? "Uploading..." : "Upload image"}
+          </button>
+          <div className="text-blue-700 px-3 py-1.5 flex items-center gap-1 font-semibold border-l border-blue-200">
             <LinkIcon className="h-3 w-3" />
-            <span>Image URL (Persistent)</span>
+            <span>URL</span>
           </div>
         </div>
       </div>
+
+      <input
+        ref={fileInputRef}
+        type="file"
+        accept="image/*"
+        className="hidden"
+        onChange={(event) => {
+          const file = event.target.files?.[0];
+          if (file) void handleFileUpload(file);
+          event.target.value = "";
+        }}
+      />
 
       {/* URL Input - Persistent for Deployment */}
       <div>
@@ -92,31 +146,11 @@ export default function ImageUploader({
 
       {error && <p className="text-xs text-red-500 font-medium">{error}</p>}
 
-      {/* Critical Info - Why URL Only */}
+      {/* Storage note */}
       {!value && (
-        <div className="rounded-lg border-2 border-red-400 bg-red-50/90 p-3.5 text-[10px] text-red-900 space-y-2">
-          <p className="font-bold text-red-800">{"⚠️  CRITICAL: Local Uploads Don't Work After Deployment"}</p>
-          <p>
-            {`All images must be from direct URLs. Local file uploads disappear when the server restarts on free hosting. This is why you see no images after deployment.`}
-          </p>
-          <p className="font-semibold text-red-800">{"Step-by-step to save images that persist:"}</p>
-          <ol className="ml-4 space-y-1.5 list-decimal text-red-800">
-            <li><strong>Option 1 (Recommended):</strong> Use Cloudinary
-              <ul className="ml-3 mt-0.5 text-[9px] list-disc">
-                <li>Sign up free at cloudinary.com</li>
-                <li>Upload image to Media Library</li>
-                <li>Copy the image URL and paste here</li>
-              </ul>
-            </li>
-            <li><strong>Option 2:</strong> Use Imgur
-              <ul className="ml-3 mt-0.5 text-[9px] list-disc">
-                <li>Go to imgur.com and upload image</li>
-                <li>Right-click image → Copy image link</li>
-                <li>Paste the URL here</li>
-              </ul>
-            </li>
-            <li><strong>Option 3:</strong> Use imgbb.com (similar to Imgur)</li>
-          </ol>
+        <div className="rounded-lg border border-blue-200 bg-blue-50/80 p-3.5 text-[10px] text-blue-900">
+          <p className="font-semibold">Images uploaded here are stored in Supabase Storage and remain available after deployment.</p>
+          <p className="mt-1">You can also paste a public image URL below.</p>
         </div>
       )}
 

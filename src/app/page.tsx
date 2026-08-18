@@ -16,8 +16,8 @@ import SearchModal from "@/components/SearchModal";
 import MobileMenu from "@/components/MobileMenu";
 import CartDrawer from "@/components/CartDrawer";
 
-import { DEFAULT_SITE_CONTENT, getSiteContent } from "@/lib/site-content";
-import { getStoredProducts, products as initialProducts } from "@/data/products";
+import { DEFAULT_SITE_CONTENT, getSiteContent, hydrateSiteContent } from "@/lib/site-content";
+import { getStoredProducts, hydrateProducts, products as initialProducts } from "@/data/products";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
@@ -33,7 +33,10 @@ export default function HomePage() {
       setSiteContent(getSiteContent());
       setProductList(getStoredProducts());
     };
-    sync();
+    void Promise.all([hydrateSiteContent(), hydrateProducts()]).then(([remoteContent, remoteProducts]) => {
+      setSiteContent(remoteContent);
+      setProductList(remoteProducts);
+    });
     window.addEventListener("storage", sync);
     window.addEventListener("drishyam:content-update", sync);
     window.addEventListener("drishyam:products-update", sync);
