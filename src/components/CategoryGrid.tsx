@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import { motion } from "framer-motion";
-import { DEFAULT_SITE_CONTENT, getSiteContent, AdminCategory } from "@/lib/site-content";
+import { DEFAULT_SITE_CONTENT, getSiteContent, hydrateSiteContent, AdminCategory } from "@/lib/site-content";
 
 export default function CategoryGrid() {
   const [categories, setCategories] = useState<AdminCategory[]>([]);
@@ -19,6 +19,7 @@ export default function CategoryGrid() {
     };
 
     sync();
+    void hydrateSiteContent().then((content) => setCategories(content.categories ?? []));
     window.addEventListener("storage", sync);
     window.addEventListener("drishyam:content-update", sync);
     return () => {

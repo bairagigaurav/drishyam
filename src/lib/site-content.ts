@@ -300,17 +300,19 @@ export function getSiteContent(): SiteContent {
   }
 }
 
-export function saveSiteContent(content: SiteContent) {
-  if (typeof window === "undefined") return;
-  window.localStorage.setItem(SITE_CONTENT_KEY, JSON.stringify(content));
-  notifySiteContentUpdate();
-
-  if (supabase) {
-    void supabase
-      .from("site_data")
-      .update({ content, updated_at: new Date().toISOString() })
-      .eq("id", "main");
+export async function saveSiteContent(content: SiteContent) {
+  if (typeof window !== "undefined") {
+    window.localStorage.setItem(SITE_CONTENT_KEY, JSON.stringify(content));
+    notifySiteContentUpdate();
   }
+
+  if (!supabase) return;
+
+  const { error } = await supabase
+    .from("site_data")
+    .upsert({ id: "main", content, updated_at: new Date().toISOString() }, { onConflict: "id" });
+
+  if (error) throw error;
 }
 
 export async function hydrateSiteContent() {

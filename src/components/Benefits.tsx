@@ -15,7 +15,7 @@ import {
   Star,
   CheckCircle2,
 } from "lucide-react";
-import { DEFAULT_SITE_CONTENT, getSiteContent } from "@/lib/site-content";
+import { DEFAULT_SITE_CONTENT, getSiteContent, hydrateSiteContent } from "@/lib/site-content";
 
 const ICON_MAP: Record<string, React.ElementType> = {
   ShieldCheck,
@@ -42,6 +42,7 @@ export default function Benefits() {
     };
 
     sync();
+    void hydrateSiteContent().then((content) => setBenefits(content.benefits ?? DEFAULT_SITE_CONTENT.benefits));
     window.addEventListener("storage", sync);
     window.addEventListener("drishyam:content-update", sync);
     return () => {

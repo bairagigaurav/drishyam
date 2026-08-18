@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { Star, ChevronLeft, ChevronRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { DEFAULT_SITE_CONTENT, getSiteContent, TestimonialItem } from "@/lib/site-content";
+import { DEFAULT_SITE_CONTENT, getSiteContent, hydrateSiteContent, TestimonialItem } from "@/lib/site-content";
 
 export default function Testimonials() {
   const [list, setList] = useState<TestimonialItem[]>(DEFAULT_SITE_CONTENT.testimonials);
@@ -18,6 +18,11 @@ export default function Testimonials() {
     };
 
     sync();
+    void hydrateSiteContent().then((content) => {
+      const nextList = content.testimonials ?? DEFAULT_SITE_CONTENT.testimonials;
+      setList(nextList);
+      setActiveIdx((prev) => (prev >= nextList.length ? 0 : prev));
+    });
     window.addEventListener("storage", sync);
     window.addEventListener("drishyam:content-update", sync);
     return () => {

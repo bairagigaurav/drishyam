@@ -211,7 +211,7 @@ export function notifyProductsUpdate() {
   );
 }
 
-export function saveProducts(nextProducts: Product[]) {
+export async function saveProducts(nextProducts: Product[]) {
   products = nextProducts;
 
   if (typeof window !== "undefined") {
@@ -223,12 +223,13 @@ export function saveProducts(nextProducts: Product[]) {
     notifyProductsUpdate();
   }
 
-  if (supabase) {
-    void supabase
-      .from("site_data")
-      .update({ products: nextProducts, updated_at: new Date().toISOString() })
-      .eq("id", "main");
-  }
+  if (!supabase) return;
+
+  const { error } = await supabase
+    .from("site_data")
+    .upsert({ id: "main", products: nextProducts, updated_at: new Date().toISOString() }, { onConflict: "id" });
+
+  if (error) throw error;
 }
 
 export async function hydrateProducts() {
@@ -256,7 +257,7 @@ export function addProductToCatalog(product: Product) {
 
   const nextProducts = [...current, product];
 
-  saveProducts(nextProducts);
+  void saveProducts(nextProducts);
 
   return product;
 }
@@ -268,19 +269,19 @@ export function deleteProductFromCatalog(id: string) {
     (p) => p.id !== id
   );
 
-  saveProducts(nextProducts);
+  void saveProducts(nextProducts);
 
   return nextProducts;
 }
 
 export function clearAllCatalogProducts() {
-  saveProducts([]);
+  void saveProducts([]);
 
   return [];
 }
 
 export function restoreDefaultCatalogProducts() {
-  saveProducts([...defaultProducts]);
+  void saveProducts([...defaultProducts]);
 
   return defaultProducts;
 }

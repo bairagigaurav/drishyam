@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { DEFAULT_SITE_CONTENT, getSiteContent } from "@/lib/site-content";
+import { DEFAULT_SITE_CONTENT, getSiteContent, hydrateSiteContent } from "@/lib/site-content";
 import { makeWhatsAppUrl } from "@/lib/whatsapp";
 
 export default function Hero() {
@@ -19,6 +19,7 @@ export default function Hero() {
 
     if (typeof window !== "undefined") {
       sync();
+      void hydrateSiteContent().then(setSiteContent);
       window.addEventListener("storage", sync);
       window.addEventListener("drishyam:content-update", sync);
     }
