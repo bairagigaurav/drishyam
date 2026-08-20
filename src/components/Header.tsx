@@ -39,7 +39,8 @@ export default function Header() {
       >
         <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between">
-            <button
+            <div className="flex items-center justify-between gap-4">
+    <button
               onClick={() => setMobileMenuOpen(true)}
               className="p-2 -ml-2 lg:hidden rounded-full hover:bg-white/10 transition-colors"
               aria-label="Open menu"
@@ -50,6 +51,8 @@ export default function Header() {
             <div className="flex-1 lg:flex-initial flex justify-center lg:justify-start">
               <BrandLogo variant="full" size="md" theme="light" href="/" />
             </div>
+            </div>
+        
 
             <nav className="hidden lg:flex items-center space-x-8 text-[11px] font-semibold uppercase -[0.22em] text-white/80">
               {navItems.map((item) => (

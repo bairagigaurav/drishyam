@@ -98,7 +98,7 @@ export default function Hero() {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(245,158,11,0.22),transparent_28%)]" />
 
         {/* ================= CONTENT ================= */}
-        <div className="absolute inset-0 flex items-center z-10 px-4 sm:px-6 lg:px-8">
+        <div className="absolute inset-0 flex  z-10 px-4 sm:px-6 lg:px-8">
           <div className="max-w-7xl mx-auto w-full grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr]">
 
             <motion.div
@@ -111,12 +111,13 @@ export default function Hero() {
               }}
               className="text-left"
             >
-              <div className="inline-flex max-sm:text-[8px] items-center gap-3 rounded-full border border-[#f59e0b]/40 bg-white/5 px-4 py-2 text-[11px] font-semibold uppercase -[0.28em] text-[#fef3c7] backdrop-blur-sm">
+              <div className="relative -top-[80px]">
+                <div className="inline-flex max-sm:text-[8px] items-center gap-3 rounded-full border border-[#f59e0b]/40 bg-white/5 px-4 py-2 text-[11px] font-semibold uppercase -[0.28em] text-[#fef3c7] backdrop-blur-sm">
                 <span className="h-2 w-2 rounded-full bg-[#f59e0b]" />
                 {activeSlide.eyebrow || activeSlide.title}
               </div>
 
-              <h1 className="mt-6 max-sm:text-2xl  text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-white leading-[0.96] ">
+              <h1 className="mt-6 max-sm:text-2xl uppercase text-4xl sm:text-5xl md:text-5xl font-semibold  text-white leading-[1] ">
                 {siteContent.hero.headline}
               </h1>
 
@@ -159,6 +160,8 @@ export default function Hero() {
                   </span>
                 ))}
               </div>
+              </div>
+              
             </motion.div>
 
             {/* ================= RIGHT IMAGE ================= */}
