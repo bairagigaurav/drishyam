@@ -71,7 +71,7 @@ export default function FaceShapeFinder() {
               <span className="text-sm font-semibold uppercase -widest text-charcoal/60 block mb-2">
                 Face Shape Guide
               </span>
-              <h2 className="font-serif text-3xl md:text-4xl text-charcoal font-medium leading-tight">
+              <h2 className=" text-3xl md:text-4xl text-charcoal font-medium uppercase leading-tight">
                 Find Frames That <br />Fit You.
               </h2>
             </div>
@@ -207,7 +207,7 @@ export default function FaceShapeFinder() {
                       <span className="text-sm text-charcoal/40 uppercase font-bold -widest">
                         Detected Shape
                       </span>
-                      <h4 className="text-2xl font-serif font-semibold text-charcoal mt-1">
+                      <h4 className="text-2xl  font-semibold text-charcoal mt-1">
                         {detectedShape.name} Shape
                       </h4>
                       <p className="text-sm text-charcoal/60 mt-2 font-light leading-relaxed">

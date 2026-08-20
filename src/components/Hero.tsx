@@ -116,7 +116,7 @@ export default function Hero() {
                 {activeSlide.eyebrow || activeSlide.title}
               </div>
 
-              <h1 className="mt-6 max-sm:text-2xl font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-white leading-[0.96] -[-0.04em]">
+              <h1 className="mt-6 max-sm:text-2xl  text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-white leading-[0.96] ">
                 {siteContent.hero.headline}
               </h1>
 

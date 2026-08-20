@@ -33,7 +33,7 @@ export default function CheckoutPage() {
         {cart.length === 0 ? (
           <div className="text-center py-20">
             <ShoppingBag className="w-12 h-12 text-charcoal/20 mx-auto mb-4" />
-            <h2 className="font-serif text-lg font-medium text-charcoal">Your bag is empty</h2>
+            <h2 className=" text-lg font-medium text-charcoal">Your bag is empty</h2>
             <Link href="/shop" className="mt-4 inline-block bg-charcoal text-white px-6 py-2.5 text-sm font-semibold uppercase -widest">
               Shop Collection
             </Link>
@@ -44,7 +44,7 @@ export default function CheckoutPage() {
             <div className="rounded-3xl bg-white border border-beige-100 p-8">
               <div className="mb-6">
                 <p className="text-sm uppercase -widest font-semibold text-charcoal/50 mb-2">Offline Store Order</p>
-                <h1 className="font-serif text-3xl text-charcoal font-medium">Send this order to WhatsApp</h1>
+                <h1 className=" text-3xl text-charcoal font-medium">Send this order to WhatsApp</h1>
                 <p className="mt-4 text-sm leading-relaxed text-charcoal/60">
                   Our store team will receive your order and contact you on WhatsApp to confirm pickup and availability.
                 </p>

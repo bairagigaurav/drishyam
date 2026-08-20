@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Playfair_Display } from "next/font/google";
+import { Roboto, Playfair_Display } from "next/font/google";
 import { Phone } from "lucide-react";
 import Loader from "@/components/Loader";
 import OnboardingModal from "@/components/OnboardingModal";
@@ -13,9 +13,10 @@ function WhatsAppIcon() {
   );
 }
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const roboto = Roboto({
+  variable: "--font-roboto",
   subsets: ["latin"],
+  weight: ["400", "500", "700"],
 });
 
 const playfairDisplay = Playfair_Display({
@@ -48,7 +49,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${playfairDisplay.variable} h-full antialiased`}
+      className={`${roboto.variable} ${playfairDisplay.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-white text-[#111111] selection:bg-[#fafaf9] selection:text-black">
         <Loader />

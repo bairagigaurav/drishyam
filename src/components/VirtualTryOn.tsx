@@ -54,7 +54,7 @@ export default function VirtualTryOn() {
           <span className="text-sm font-semibold uppercase -widest text-charcoal/60 block mb-2">
             Virtual Preview
           </span>
-          <h2 className="font-serif text-3xl md:text-4xl text-charcoal font-medium">
+          <h2 className=" text-3xl md:text-4xl text-charcoal font-medium uppercase">
             Preview frames on a model with clarity.
           </h2>
           <p className="text-base font-light text-charcoal/60 mt-3 max-w-2xl mx-auto leading-relaxed">
@@ -107,7 +107,7 @@ export default function VirtualTryOn() {
               <span className="text-sm text-charcoal/40 font-bold uppercase -widest block mb-2">
                 Featured Frame
               </span>
-              <h3 className="font-serif text-3xl font-semibold text-charcoal">{selectedProduct.name}</h3>
+              <h3 className=" text-3xl font-semibold text-charcoal">{selectedProduct.name}</h3>
               <p className="text-4xl font-semibold text-charcoal mt-3">${selectedProduct.price}</p>
               <p className="text-base text-charcoal/60 mt-4 leading-relaxed">{selectedProduct.description}</p>
             </div>

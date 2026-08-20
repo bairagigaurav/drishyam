@@ -133,7 +133,7 @@ export default function OnboardingModal() {
                     <Sparkles className="h-3.5 w-3.5" />
                     Welcome
                   </div>
-                  <h2 className="font-serif text-3xl text-[#111111]">
+                  <h2 className=" text-3xl text-[#111111]">
                     {step === 0 && "Tell us who you are"}
                     {step === 1 && "Add your number"}
                     {step === 2 && "Almost there"}

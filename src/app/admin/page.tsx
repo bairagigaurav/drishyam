@@ -819,7 +819,7 @@ export default function AdminPage() {
               </button>
               <div>
                 <p className="text-[10px] font-bold uppercase -[0.24em] text-[#a55d00]">Drishyam Control Center</p>
-                <h2 className="font-serif text-xl text-[#111111] sm:text-2xl capitalize">
+                <h2 className=" text-xl text-[#111111] sm:text-2xl capitalize">
                   {tabs.find((t) => t.id === activeTab)?.label}
                 </h2>
               </div>

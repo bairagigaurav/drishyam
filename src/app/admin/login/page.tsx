@@ -60,7 +60,7 @@ export default function AdminLoginPage() {
           {/* Brand */}
           <div className="mb-8 text-center flex flex-col items-center">
             <BrandLogo variant="full" size="lg" theme="dark" href="/" className="mb-4" />
-            <h1 className="font-serif text-2xl text-[#111111] font-semibold">
+            <h1 className=" text-2xl text-[#111111] font-semibold">
               Admin Portal
             </h1>
             <p className="mt-1 text-sm text-[#111111]/50">

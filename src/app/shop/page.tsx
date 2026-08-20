@@ -112,7 +112,7 @@ function ShopContent() {
     <div className="mx-auto px-4 sm:px-6 lg:px-8 py-12">
       {/* Editorial Header */}
       <div className="mb-10 text-center lg:text-left">
-        <h1 className="font-serif text-3xl md:text-4xl text-charcoal font-medium">
+        <h1 className=" text-3xl md:text-4xl text-charcoal font-medium uppercase">
           The Collection
         </h1>
         <p className="text-sm text-charcoal/50 font-light mt-2 max-w-md">

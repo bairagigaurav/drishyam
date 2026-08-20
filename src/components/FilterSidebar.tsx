@@ -142,7 +142,7 @@ export default function FilterSidebar({
           {/* Panel drawer content */}
           <div className="relative w-4/5 max-w-sm h-full bg-white shadow-2xl flex flex-col z-10 p-6 overflow-y-auto">
             <div className="flex items-center justify-between pb-4 border-b border-beige-100 mb-6">
-              <span className="font-serif text-base font-bold -widest text-charcoal">
+              <span className=" text-base font-bold -widest text-charcoal">
                 DRISHYAM
               </span>
               <button

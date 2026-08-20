@@ -63,7 +63,7 @@ export default function ProductDetailPage({ params }: PageProps) {
         <Header />
 
         <div className="mx-auto max-w-full px-4 py-32 text-center">
-          <h1 className="font-serif text-2xl text-charcoal">
+          <h1 className=" text-2xl text-charcoal">
             Frame Not Found
           </h1>
 
@@ -213,7 +213,7 @@ export default function ProductDetailPage({ params }: PageProps) {
                   </div>
 
                   <div>
-                    <h1 className="font-serif text-4xl font-medium leading-none text-charcoal sm:text-5xl">
+                    <h1 className=" text-4xl font-medium leading-none text-charcoal sm:text-5xl">
                       {product.name}
                     </h1>
                   </div>
@@ -470,7 +470,7 @@ export default function ProductDetailPage({ params }: PageProps) {
           <section className="bg-white py-20">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
               <div className="mb-8 flex items-end justify-between gap-4">
-                <h2 className="font-serif text-3xl text-charcoal">
+                <h2 className=" text-3xl text-charcoal">
                   Recommended frames
                 </h2>
 

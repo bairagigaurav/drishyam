@@ -58,7 +58,7 @@ export default function FaceShapePage() {
             <span className="text-[14px] font-semibold uppercase -widest text-charcoal/60 block mb-2">
               Fit Companion
             </span>
-            <h1 className="font-serif text-3xl md:text-4xl text-charcoal font-medium">
+            <h1 className=" text-3xl md:text-4xl text-charcoal font-medium uppercase">
               Shop by Face Shape
             </h1>
             <p className="text-sm text-charcoal/50 font-light mt-2">
@@ -74,7 +74,7 @@ export default function FaceShapePage() {
         <section className="py-20 max-w-full mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <span className="text-[14px] uppercase font-bold -widest text-charcoal/40">Reference</span>
-            <h2 className="font-serif text-2xl md:text-3xl text-charcoal mt-1">Our Face Shape Guide</h2>
+            <h2 className=" text-2xl md:text-3xl text-charcoal mt-1">Our Face Shape Guide</h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
@@ -86,7 +86,7 @@ export default function FaceShapePage() {
                     <img src={s.img} alt={s.name} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" />
                   </div>
                   <div>
-                    <h3 className="font-serif text-lg font-medium text-charcoal">{s.name}</h3>
+                    <h3 className=" text-lg font-medium text-charcoal">{s.name}</h3>
                     <p className="text-[14px] text-charcoal/50 font-light mt-1 leading-relaxed">
                       {s.description}
                     </p>

@@ -78,7 +78,7 @@ export default function HomePage() {
               <span className="text-sm font-semibold uppercase -widest text-charcoal/60 block mb-2">
                 {siteContent.labels.favorites}
               </span>
-              <h2 className="font-serif text-3xl text-charcoal font-medium">
+              <h2 className=" text-3xl text-charcoal font-medium uppercase">
                 Best Sellers.
               </h2>
             </div>
@@ -94,7 +94,7 @@ export default function HomePage() {
                 <span className="text-sm font-semibold uppercase -[0.24em] text-[#fcd34d] block mb-3">
                   {siteContent.labels.whyDrishyam}
                 </span>
-                <h2 className="font-serif text-3xl md:text-4xl text-white font-medium">
+                <h2 className=" text-3xl md:text-4xl text-white font-medium">
                   Premium eyewear, local expertise, and real care.
                 </h2>
               </div>
@@ -115,7 +115,7 @@ export default function HomePage() {
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="mb-10 text-center">
               <span className="text-[12px] font-bold uppercase -[0.24em] text-charcoal/60 block mb-3">Visit our optical boutique</span>
-              <h2 className="font-serif text-3xl md:text-4xl text-charcoal font-medium">{siteContent.store.title}</h2>
+              <h2 className=" text-3xl md:text-4xl text-charcoal font-medium uppercase">{siteContent.store.title}</h2>
             </div>
 
             <div className="grid gap-6 lg:grid-cols-3 items-center">
@@ -138,7 +138,7 @@ export default function HomePage() {
               <div className="rounded-[24px] border border-[#eadcc6] bg-white p-6 shadow-[0_12px_28px_rgba(17,17,17,0.04)] h-[360px] flex flex-col justify-between">
                 <div>
                   <p className="text-[11px] font-bold uppercase -[0.18em] text-charcoal/50 mb-2">Drishyam Optical</p>
-                  <h3 className="font-serif text-xl text-charcoal mb-4">{siteContent.store.title}</h3>
+                  <h3 className=" text-xl text-charcoal mb-4">{siteContent.store.title}</h3>
                   <p className="text-sm leading-relaxed text-charcoal/70 mb-4">{siteContent.store.location}</p>
                   <p className="text-sm text-charcoal/60 font-light mb-4">{siteContent.store.subtitle}</p>
                 </div>
@@ -162,7 +162,7 @@ export default function HomePage() {
               <span className="text-sm font-semibold uppercase -[0.24em] text-charcoal/60 block mb-2">
                 Shop by style
               </span>
-              <h2 className="font-serif text-3xl text-charcoal font-medium">
+              <h2 className=" text-3xl text-charcoal font-medium uppercase">
                 Curated looks for every mood.
               </h2>
             </div>
@@ -180,7 +180,7 @@ export default function HomePage() {
                 <span className="text-sm font-semibold uppercase -widest text-charcoal/60 block mb-2">
                   Just Released
                 </span>
-                <h2 className="font-serif text-3xl md:text-4xl text-charcoal font-medium">
+                <h2 className=" text-3xl md:text-4xl text-charcoal font-medium uppercase">
                   {siteContent.labels.newArrivals}.
                 </h2>
               </div>

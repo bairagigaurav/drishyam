@@ -16,7 +16,7 @@ export default function TryOnPage() {
             <span className="text-sm font-semibold uppercase -widest text-charcoal/60 block mb-2">
               Virtual Studio
             </span>
-            <h1 className="font-serif text-3xl md:text-4xl text-charcoal font-medium">
+            <h1 className=" text-3xl md:text-4xl text-charcoal font-medium uppercase">
               Interactive Fitting Room
             </h1>
             <p className="text-sm text-charcoal/50 font-light mt-2">

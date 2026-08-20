@@ -94,7 +94,7 @@ export default function Newsletter() {
           <span className="text-[12px] font-bold uppercase -[0.24em] text-charcoal/60 block mb-3">
             Contact us
           </span>
-          <h2 className="font-serif text-3xl md:text-5xl text-charcoal font-medium">
+          <h2 className=" text-3xl md:text-5xl text-charcoal font-medium">
             Visit or message our boutique.
           </h2>
         </div>
@@ -202,7 +202,7 @@ export default function Newsletter() {
                     <Send className="h-4 w-4" />
                   </button>
                     <div className="rounded-[30px] border border-[#efdcc1] bg-white p-6 shadow-[0_25px_60px_rgba(17,17,17,0.06)]">
-              <h3 className="font-serif text-2xl md:text-3xl text-charcoal mb-5">Visit our store</h3>
+              <h3 className=" text-2xl md:text-3xl text-charcoal mb-5">Visit our store</h3>
 
               <div className="space-y-5 text-base text-charcoal/75">
                 <div className="flex gap-3 items-start">
@@ -237,7 +237,7 @@ export default function Newsletter() {
                   className="flex flex-col items-center justify-center rounded-[24px] border border-emerald-200 bg-emerald-50 p-6 text-center"
                 >
                   <CheckCircle2 className="mb-3 h-10 w-10 text-emerald-600" />
-                  <h3 className="font-serif text-2xl text-charcoal">Thanks for reaching out.</h3>
+                  <h3 className=" text-2xl text-charcoal">Thanks for reaching out.</h3>
                   <p className="mt-2 max-w-sm text-sm text-charcoal/60">
                     We have received your message and will contact you shortly.
                   </p>

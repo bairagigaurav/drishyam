@@ -40,7 +40,7 @@ export default function CategoryGrid() {
             <span className="text-sm font-semibold uppercase -[0.24em] text-[#1f2a44] block mb-2">
               Our Collections
             </span>
-            <h2 className="font-serif text-3xl md:text-4xl text-[#111827] font-medium">
+            <h2 className=" text-3xl md:text-4xl text-[#111827] font-medium">
               Shop by style.
             </h2>
           </div>

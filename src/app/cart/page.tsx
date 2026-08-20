@@ -24,7 +24,7 @@ export default function CartPage() {
       <main className="flex-1 bg-white">
         <div className="mx-auto px-4 sm:px-6 lg:px-8 py-12">
           
-          <h1 className="font-serif text-3xl font-medium text-charcoal mb-8 text-center sm:text-left">
+          <h1 className=" text-3xl font-medium text-charcoal mb-8 text-center sm:text-left">
             Shopping Bag
           </h1>
 
@@ -193,7 +193,7 @@ export default function CartPage() {
           ) : (
             <div className="text-center py-24 border border-dashed border-beige-200">
               <ShoppingBag className="w-12 h-12 text-charcoal/20 mx-auto mb-4" />
-              <h2 className="font-serif text-lg font-medium text-charcoal">Your bag is empty</h2>
+              <h2 className=" text-lg font-medium text-charcoal">Your bag is empty</h2>
               <p className="text-sm text-charcoal/50 mt-1">Explore our collections to add frames to your selection.</p>
               <Link
                 href="/shop"

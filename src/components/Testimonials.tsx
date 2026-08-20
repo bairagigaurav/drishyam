@@ -80,7 +80,7 @@ export default function Testimonials() {
             Reviews
           </span>
 
-          <h2 className="font-serif text-3xl md:text-4xl text-white font-medium">
+          <h2 className=" text-3xl md:text-4xl text-white font-medium">
             Seen On You.
           </h2>
 
