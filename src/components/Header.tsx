@@ -34,15 +34,15 @@ export default function Header() {
         className={`fixed left-0 right-0 top-0 z-40 w-full transition-all duration-300 ${
           isScrolled
             ? "bg-[#0f172a]/95 backdrop-blur-md border-b border-white/10  lg:py-2.5 shadow-[0_16px_40px_rgba(15,23,42,0.16)]"
-            : "bg-[#0f172a] py-1 border-b border-[#f59e0b]/20"
+            : "bg-[#0f172a] py-1 lg:py-2 border-b border-[#f59e0b]/20"
         }`}
       >
         <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between">
-            <div className="flex items-center justify-between gap-4">
+            <div className="flex  justify-between">
     <button
               onClick={() => setMobileMenuOpen(true)}
-              className="p-2 -ml-2 lg:hidden rounded-full hover:bg-white/10 transition-colors"
+              className="pr-2 -ml-2 lg:hidden rounded-full hover:bg-white/10 transition-colors"
               aria-label="Open menu"
             >
               <Menu className="w-5 h-5 text-white/90" />

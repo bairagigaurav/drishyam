@@ -162,19 +162,25 @@ export default function ProductDetailPage({ params }: PageProps) {
 
           <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-14">
             <div className="lg:col-span-7">
-              <div className="overflow-hidden rounded-[28px] border border-beige-100 bg-[#f9f3ed] shadow-[0_30px_80px_rgba(17,17,17,0.08)]">
-                <div className="relative aspect-[4/3] overflow-hidden">
-                  <Image
-                    src={activeImage}
-                    alt={product.name}
-                    fill
-                    priority
-                    unoptimized={true}
-                    className="object-cover transition-transform duration-500 hover:scale-[1.03]"
-                    sizes="(max-width: 1024px) 100vw, 55vw"
-                  />
-                </div>
-              </div>
+      <div className="overflow-hidden rounded-[28px] border border-beige-100 bg-[#f9f3ed] shadow-[0_30px_80px_rgba(17,17,17,0.08)]">
+  <div className="relative aspect-[4/3] overflow-hidden">
+    {activeImage ? (
+      <Image
+        src={activeImage}
+        alt={product.name}
+        fill
+        priority
+        unoptimized
+        className="object-cover transition-transform duration-500 hover:scale-[1.03]"
+        sizes="(max-width: 1024px) 100vw, 55vw"
+      />
+    ) : (
+      <div className="flex h-full items-center justify-center text-gray-400">
+        No image available
+      </div>
+    )}
+  </div>
+</div>
 
               <div className="mt-4 grid grid-cols-4 gap-3">
                 {product.images.map((img, idx) => (
