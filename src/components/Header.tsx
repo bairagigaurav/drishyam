@@ -33,8 +33,8 @@ export default function Header() {
       <header
         className={`fixed left-0 right-0 top-0 z-40 w-full transition-all duration-300 ${
           isScrolled
-            ? "bg-[#0f172a]/95 backdrop-blur-md border-b border-white/10 py-2.5 shadow-[0_16px_40px_rgba(15,23,42,0.16)]"
-            : "bg-[#0f172a] py-3.5 border-b border-[#f59e0b]/20"
+            ? "bg-[#0f172a]/95 backdrop-blur-md border-b border-white/10  lg:py-2.5 shadow-[0_16px_40px_rgba(15,23,42,0.16)]"
+            : "bg-[#0f172a] py-1 border-b border-[#f59e0b]/20"
         }`}
       >
         <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8">

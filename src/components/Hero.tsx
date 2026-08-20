@@ -111,7 +111,7 @@ export default function Hero() {
               }}
               className="text-left"
             >
-              <div className="relative -top-[80px]">
+              <div className="relative -top-[80px] max-sm:pt-24">
                 <div className="inline-flex max-sm:text-[8px] items-center gap-3 rounded-full border border-[#f59e0b]/40 bg-white/5 px-4 py-2 text-[11px] font-semibold uppercase -[0.28em] text-[#fef3c7] backdrop-blur-sm">
                 <span className="h-2 w-2 rounded-full bg-[#f59e0b]" />
                 {activeSlide.eyebrow || activeSlide.title}

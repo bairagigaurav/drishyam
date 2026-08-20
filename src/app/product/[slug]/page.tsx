@@ -482,7 +482,7 @@ export default function ProductDetailPage({ params }: PageProps) {
                 </Link>
               </div>
 
-              <div className="grid grid-cols-2 gap-6 md:grid-cols-4">
+              <div className="grid grid-cols-1 gap-6 md:grid-cols-4">
                 {recommendations.map((prod) => (
                   <ProductCard key={prod.id} product={prod} />
                 ))}
